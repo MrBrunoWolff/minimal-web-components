@@ -1,0 +1,78 @@
+{
+  "name": "minimal-web-components",
+  "private": false,
+  "version": "0.1.0",
+  "description": "A minimal Web Components starter kit using Lit, Vite, and TypeScript",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt --write .",
+    "fmt:check": "oxfmt --check .",
+    "check": "oxlint && oxfmt --check .",
+    "knip": "knip",
+    "clean": "rm -rf node_modules/.vite dist playwright-report test-results"
+  },
+  "bin": {
+    "minimal-web-components": "bin/minimal-web-components.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "__tests__",
+    "index.html",
+    "tsconfig.json",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "playwright.config.ts",
+    "knip.config.ts",
+    ".oxlintrc.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "lit",
+    "web-components",
+    "custom-elements",
+    "vite",
+    "typescript",
+    "template",
+    "starter",
+    "boilerplate",
+    "scaffold"
+  ],
+  "author": "Bruno Wolff",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrBrunoWolff/minimal-web-components.git"
+  },
+  "dependencies": {
+    "lit": "latest"
+  },
+  "devDependencies": {
+    "@playwright/test": "latest",
+    "@types/bun": "latest",
+    "@vitest/browser": "latest",
+    "@vitest/browser-playwright": "latest",
+    "knip": "latest",
+    "oxfmt": "latest",
+    "oxlint": "latest",
+    "terser": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vitest": "latest",
+    "vitest-browser-lit": "latest"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}
