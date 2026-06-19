@@ -26,13 +26,19 @@ export class Router {
 
   private handleClick(e: MouseEvent): void {
     const target = (e.composedPath() as unknown as Element[]).find(
-      (el) => el.tagName?.toLowerCase() === 'a'
+      (el) => el.tagName?.toLowerCase() === 'a',
     ) as HTMLAnchorElement | undefined;
 
     if (!target) return;
 
     const href = target.getAttribute('href');
-    if (!href || href.startsWith('http') || href.startsWith('//') || href.startsWith('mailto:')) return;
+    if (
+      !href ||
+      href.startsWith('http') ||
+      href.startsWith('//') ||
+      href.startsWith('mailto:')
+    )
+      return;
 
     e.preventDefault();
     this.navigate(href);
@@ -64,7 +70,7 @@ export class Router {
       new CustomEvent<RouteMatch | null>(ROUTE_CHANGE_EVENT, {
         detail: matched,
         bubbles: true,
-      })
+      }),
     );
   }
 

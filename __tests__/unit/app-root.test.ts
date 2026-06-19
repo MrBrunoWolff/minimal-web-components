@@ -11,13 +11,19 @@ describe('app-root', () => {
 
   it('renders the header with logo', async () => {
     const screen = render(html`<app-root></app-root>`);
-    await expect.element(screen.getByText('minimal-web-components')).toBeVisible();
+    await expect
+      .element(screen.getByText('minimal-web-components'))
+      .toBeVisible();
   });
 
   it('renders navigation links', async () => {
     const screen = render(html`<app-root></app-root>`);
-    await expect.element(screen.getByRole('link', { name: 'Home' })).toBeVisible();
-    await expect.element(screen.getByRole('link', { name: 'About' })).toBeVisible();
+    await expect
+      .element(screen.getByRole('link', { name: 'Home' }))
+      .toBeVisible();
+    await expect
+      .element(screen.getByRole('link', { name: 'About' }))
+      .toBeVisible();
   });
 
   it('renders the footer', async () => {

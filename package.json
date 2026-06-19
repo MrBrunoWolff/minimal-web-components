@@ -1,25 +1,24 @@
 {
   "name": "minimal-web-components",
-  "private": false,
   "version": "0.1.0",
+  "private": false,
   "description": "A minimal Web Components starter kit using Lit, Vite, and TypeScript",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "start": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "test": "vitest",
-    "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui",
-    "test:e2e:report": "playwright show-report",
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix",
-    "fmt": "oxfmt --write .",
-    "fmt:check": "oxfmt --check .",
-    "check": "oxlint && oxfmt --check .",
-    "knip": "knip",
-    "clean": "rm -rf node_modules/.vite dist playwright-report test-results"
+  "keywords": [
+    "boilerplate",
+    "custom-elements",
+    "lit",
+    "scaffold",
+    "starter",
+    "template",
+    "typescript",
+    "vite",
+    "web-components"
+  ],
+  "license": "MIT",
+  "author": "Bruno Wolff",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrBrunoWolff/minimal-web-components.git"
   },
   "bin": {
     "minimal-web-components": "bin/minimal-web-components.js"
@@ -38,39 +37,41 @@
     "README.md",
     "LICENSE"
   ],
-  "keywords": [
-    "lit",
-    "web-components",
-    "custom-elements",
-    "vite",
-    "typescript",
-    "template",
-    "starter",
-    "boilerplate",
-    "scaffold"
-  ],
-  "author": "Bruno Wolff",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/MrBrunoWolff/minimal-web-components.git"
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "tsc && vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt --write .",
+    "fmt:check": "oxfmt --check .",
+    "check": "oxlint && oxfmt --check .",
+    "knip": "knip",
+    "clean": "rm -rf node_modules/.vite dist playwright-report test-results"
   },
   "dependencies": {
-    "lit": "latest"
+    "lit": "^3.3.3"
   },
   "devDependencies": {
-    "@playwright/test": "latest",
-    "@types/bun": "1.3.13",
-    "@vitest/browser": "4.1.5",
-    "@vitest/browser-playwright": "4.1.5",
-    "knip": "6.6.2",
-    "oxfmt": "0.46.0",
-    "oxlint": "1.61.0",
-    "terser": "5.46.2",
+    "@playwright/test": "^1.61.0",
+    "@types/bun": "1.3.14",
+    "@vitest/browser": "4.1.9",
+    "@vitest/browser-playwright": "4.1.9",
+    "knip": "6.17.1",
+    "oxfmt": "0.55.0",
+    "oxlint": "1.70.0",
+    "terser": "5.48.0",
     "typescript": "6.0.3",
-    "vite": "8.0.10",
-    "vitest": "4.1.5",
-    "vitest-browser-lit": "latest"
+    "vite": "8.0.16",
+    "vitest": "4.1.9",
+    "vitest-browser-lit": "^1.0.1"
   },
   "engines": {
     "bun": ">=1.0.0"

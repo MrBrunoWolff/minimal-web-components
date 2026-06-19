@@ -12,7 +12,7 @@ const args = process.argv.slice(2);
 if (args.includes('--version') || args.includes('-v')) {
   try {
     const pkg = JSON.parse(
-      fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')
+      fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8'),
     );
     console.log(`minimal-web-components v${pkg.version}`);
   } catch {
@@ -48,10 +48,14 @@ const colors = {
 };
 
 const log = {
-  info: (msg) => console.log(`${colors.blue}${colors.bright}ℹ${colors.reset} ${msg}`),
-  success: (msg) => console.log(`${colors.green}${colors.bright}✓${colors.reset} ${msg}`),
-  warn: (msg) => console.log(`${colors.yellow}${colors.bright}⚠${colors.reset} ${msg}`),
-  error: (msg) => console.log(`${colors.red}${colors.bright}✗${colors.reset} ${msg}`),
+  info: (msg) =>
+    console.log(`${colors.blue}${colors.bright}ℹ${colors.reset} ${msg}`),
+  success: (msg) =>
+    console.log(`${colors.green}${colors.bright}✓${colors.reset} ${msg}`),
+  warn: (msg) =>
+    console.log(`${colors.yellow}${colors.bright}⚠${colors.reset} ${msg}`),
+  error: (msg) =>
+    console.log(`${colors.red}${colors.bright}✗${colors.reset} ${msg}`),
 };
 
 const rl = readline.createInterface({
@@ -70,12 +74,12 @@ const createProject = async () => {
     const projectName =
       nameArg ||
       (await ask(
-        `${colors.cyan}${colors.bright}?${colors.reset} Project name (${defaultName}): `
+        `${colors.cyan}${colors.bright}?${colors.reset} Project name (${defaultName}): `,
       )) ||
       defaultName;
 
     const pmAnswer = await ask(
-      `${colors.cyan}${colors.bright}?${colors.reset} Package manager ${colors.bright}(npm/bun)${colors.reset}: [bun] `
+      `${colors.cyan}${colors.bright}?${colors.reset} Package manager ${colors.bright}(npm/bun)${colors.reset}: [bun] `,
     );
     const pm = pmAnswer.toLowerCase() === 'npm' ? 'npm' : 'bun';
 
@@ -93,7 +97,7 @@ const createProject = async () => {
     log.info('Downloading template...');
     execSync(
       'git clone --depth 1 https://github.com/MrBrunoWolff/minimal-web-components.git .',
-      { cwd: targetDir, stdio: 'ignore' }
+      { cwd: targetDir, stdio: 'ignore' },
     );
 
     // Remove git history so the new project starts fresh
@@ -129,14 +133,14 @@ const createProject = async () => {
           GIT_COMMITTER_NAME: 'minimal-web-components',
           GIT_COMMITTER_EMAIL: 'minimal-web-components@example.com',
         },
-      }
+      },
     );
 
     log.info(`Installing dependencies with ${pm}...`);
     execSync(`${pm} install`, { cwd: targetDir, stdio: 'inherit' });
 
     log.success(
-      `Project ${colors.bright}${projectName}${colors.reset} created successfully!`
+      `Project ${colors.bright}${projectName}${colors.reset} created successfully!`,
     );
     console.log(`
   ${colors.bright}cd ${projectName}${colors.reset}

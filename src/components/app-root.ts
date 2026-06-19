@@ -1,6 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
-import { Router, ROUTE_CHANGE_EVENT, type RouteMatch } from '../router/index.js';
+import {
+  Router,
+  ROUTE_CHANGE_EVENT,
+  type RouteMatch,
+} from '../router/index.js';
 import '../router/router-outlet.js';
 import './page-home.js';
 import './page-about.js';
@@ -53,7 +57,9 @@ export class AppRoot extends LitElement {
       font-size: 0.9375rem;
       color: var(--color-text-muted);
       text-decoration: none;
-      transition: background 0.15s, color 0.15s;
+      transition:
+        background 0.15s,
+        color 0.15s;
     }
 
     nav a:hover {

@@ -12,5 +12,12 @@
     "experimentalDecorators": true,
     "useUnknownInCatchVariables": true
   },
-  "include": ["src", "__tests__", "vite.config.ts", "vitest.config.ts", "playwright.config.ts", "knip.config.ts"]
+  "include": [
+    "src",
+    "__tests__",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "playwright.config.ts",
+    "knip.config.ts"
+  ]
 }
