@@ -24,11 +24,7 @@ A minimal starter kit for Web Components projects built with **Lit**, **Vite**, 
 Scaffold a new project with a single command:
 
 ```bash
-# Using bun (recommended)
 bunx minimal-web-components my-app
-
-# Using npm
-npx minimal-web-components my-app
 ```
 
 The interactive CLI will:
