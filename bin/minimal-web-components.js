@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 
-'use strict';
+// ESM, not CommonJS: package.json declares "type": "module", so `require` is
+// not defined here and this CLI threw "require is not defined in ES module
+// scope" on every invocation — the published bin never ran at all.
+import fs from 'node:fs';
+import path from 'node:path';
+import { execSync } from 'node:child_process';
+import readline from 'node:readline';
+import { fileURLToPath } from 'node:url';
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-const readline = require('readline');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const args = process.argv.slice(2);
 
