@@ -18,7 +18,7 @@
   "author": "Bruno Wolff",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MrBrunoWolff/minimal-web-components.git"
+    "url": "git+https://github.com/MrBrunoWolff/minimal-web-components.git"
   },
   "bin": {
     "minimal-web-components": "bin/minimal-web-components.js"
