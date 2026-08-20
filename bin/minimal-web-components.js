@@ -35,8 +35,8 @@ if (args.includes('--help') || args.includes('-h')) {
     -h, --help       Display this help message
 
   Example:
-    npx minimal-web-components my-app
-    bunx minimal-web-components my-app
+    npx @mrbrunowolff/minimal-web-components my-app
+    bunx @mrbrunowolff/minimal-web-components my-app
   `);
   process.exit(0);
 }

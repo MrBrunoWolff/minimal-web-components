@@ -1,5 +1,5 @@
 {
-  "name": "minimal-web-components",
+  "name": "@mrbrunowolff/minimal-web-components",
   "version": "0.1.0",
   "private": false,
   "description": "A minimal Web Components starter kit using Lit, Vite, and TypeScript",
@@ -38,6 +38,9 @@
     "LICENSE"
   ],
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "start": "vite",
