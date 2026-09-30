@@ -66,15 +66,15 @@
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/bun": "1.4.2",
-    "@vitest/browser": "5.0.1",
-    "@vitest/browser-playwright": "5.0.1",
-    "knip": "6.37.0",
+    "@vitest/browser": "5.0.2",
+    "@vitest/browser-playwright": "5.0.2",
+    "knip": "6.38.0",
     "oxfmt": "0.70.0",
     "oxlint": "1.85.0",
     "terser": "5.51.2",
     "typescript": "^7.0.2",
-    "vite": "8.3.0",
-    "vitest": "5.0.1",
+    "vite": "8.3.1",
+    "vitest": "5.0.2",
     "vitest-browser-lit": "^1.0.1"
   },
   "engines": {
