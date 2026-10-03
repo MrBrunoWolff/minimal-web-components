@@ -1,148 +1,105 @@
-# minimal-web-components
+# Minimal Web Components
 
-[![Lit](https://img.shields.io/badge/Lit-Latest-324FFF?style=flat-square&logo=lit)](https://lit.dev/)
-[![Vite](https://img.shields.io/badge/Vite-Latest-646CFF?style=flat-square&logo=vite)](https://vite.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-Latest-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
-[![npm](https://img.shields.io/npm/v/minimal-web-components?style=flat-square&logo=npm)](https://www.npmjs.com/package/minimal-web-components)
+A minimal Web Components starter built with Lit, Vite and TypeScript, run with Bun.
 
-A minimal starter kit for Web Components projects built with **Lit**, **Vite**, and **TypeScript**.
+[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
 ## Features
 
-- Web Components with [Lit](https://lit.dev/) — reactive properties, scoped styles, Shadow DOM
-- [Vite 8](https://vite.dev/) dev server + Rolldown-powered production builds
-- TypeScript with strict mode
-- [Oxlint](https://oxc.rs/) + [Oxfmt](https://oxc.rs/) — Rust-speed lint and format, no ESLint or Prettier
-- [Vitest](https://vitest.dev/) Browser Mode — real Chromium tests with full Shadow DOM support
-- Built-in `URLPattern`-based router — zero external dependencies, History API, declarative `<router-outlet>`
+- [Lit 3](https://lit.dev/) components with decorators and scoped Shadow DOM styles, TypeScript in strict mode
+- [Vite 8](https://vite.dev/) dev server on port 3000; Terser-minified production build with source maps
+- Built-in `URLPattern` + History API router with a `<router-outlet>` element, no dependencies beyond `lit`
+- Unit tests in [Vitest](https://vitest.dev/) browser mode (real Chromium via Playwright), plus Playwright end-to-end tests
+- [Oxlint](https://oxc.rs/), [Oxfmt](https://oxc.rs/) and [Knip](https://knip.dev/); `bun run check` runs them with the type check in parallel
+- Light/dark theme through CSS custom properties in `src/styles/global.css`
+- GitHub Actions CI: check, unit tests, build and `bun audit` on every push and pull request
+- `bunfig.toml` refuses npm versions published less than 3 days ago
 
-## Getting Started
+## Quick start
 
-### Create a new project (easiest)
+### Clone
 
-Scaffold a new project with a single command:
-
-```bash
-bunx @mrbrunowolff/minimal-web-components my-app
-```
-
-The interactive CLI will:
-
-1. Ask for your project name (or use the one you provided)
-2. Let you choose between bun or npm
-3. Clone the template, set up git, and install dependencies
-
-### Clone manually
-
-```bash
-git clone https://github.com/MrBrunoWolff/minimal-web-components.git my-app
-cd my-app
-rm -rf .git bin
-git init && git add . && git commit -m "Initial commit"
+```sh
+git clone https://github.com/MrBrunoWolff/minimal-web-components.git
+cd minimal-web-components
 bun install
-```
-
-## Development
-
-```bash
-# Start the dev server at http://localhost:3000
 bun run dev
-
-# Type-check + production build → dist/
-bun run build
-
-# Preview the production build
-bun run preview
 ```
 
-## Testing
+## Scripts
 
-Tests run in real Chromium via Playwright — no JSDOM, full Shadow DOM support.
+| Command                   | Description                                                                 |
+| ------------------------- | --------------------------------------------------------------------------- |
+| `bun run dev`             | Start the Vite dev server at http://localhost:3000 and open the browser     |
+| `bun run start`           | Same as `dev`                                                               |
+| `bun run build`           | Type-check with `tsc`, then build for production into `dist/`               |
+| `bun run typecheck`       | Type-check with `tsc --noEmit`                                              |
+| `bun run preview`         | Serve the production build locally                                          |
+| `bun run test`            | Run the Vitest unit tests in browser mode (Chromium); watches by default    |
+| `bun run test:e2e`        | Run the Playwright end-to-end tests (starts the dev server if not running)  |
+| `bun run test:e2e:ui`     | Run the Playwright tests in UI mode                                         |
+| `bun run test:e2e:report` | Open the last Playwright HTML report                                        |
+| `bun run lint`            | Lint with Oxlint                                                            |
+| `bun run lint:fix`        | Lint with Oxlint and apply automatic fixes                                  |
+| `bun run fmt`             | Format the project with Oxfmt                                               |
+| `bun run fmt:check`       | Check formatting with Oxfmt without writing                                 |
+| `bun run check`           | Run `typecheck`, `lint`, `fmt:check` and `knip` in parallel                 |
+| `bun run knip`            | Report unused files, exports and dependencies                               |
+| `bun run clean`           | Remove the Vite cache, `dist/`, `playwright-report/` and `test-results/`    |
+| `bun run audit`           | Run `bun audit`, failing on high or critical advisories                     |
 
-```bash
-bun test
-```
-
-Example test lives in `test/app-root.test.ts`. Add tests alongside your components in `test/`.
-
-## Linting and Formatting
-
-```bash
-bun run lint          # Oxlint
-bun run lint:fix      # Auto-fix
-bun run fmt           # Oxfmt (write)
-bun run fmt:check     # Oxfmt (check only)
-bun run check         # lint + fmt:check together
-```
-
-## Project Structure
+## Project structure
 
 ```
 minimal-web-components/
+├── .github/workflows/ci.yml    # Check, test, build, audit; npm publish on main
+├── __tests__/
+│   ├── e2e/navigation.spec.ts  # Playwright end-to-end tests
+│   └── unit/app-root.test.ts   # Vitest browser-mode tests
 ├── bin/
-│   └── minimal-web-components.js  # CLI scaffolder (npx/bunx)
+│   └── minimal-web-components.js  # Project scaffolding CLI (package bin)
 ├── src/
 │   ├── components/
-│   │   ├── app-root.ts            # Shell — header, nav, footer, router setup
-│   │   ├── page-home.ts           # Home page component
-│   │   └── page-about.ts          # About page component
+│   │   ├── app-root.ts         # Shell: header, nav, footer, route table
+│   │   ├── page-home.ts        # Home page
+│   │   └── page-about.ts       # About page
 │   ├── router/
-│   │   ├── index.ts               # Router class (URLPattern + History API)
-│   │   └── router-outlet.ts       # <router-outlet> Lit element
-│   ├── styles/
-│   │   └── global.css             # CSS reset + custom properties (light/dark)
-│   └── main.ts                    # Entry point
-├── test/
-│   └── app-root.test.ts           # Vitest Browser Mode test
+│   │   ├── index.ts            # Router class (URLPattern + History API)
+│   │   └── router-outlet.ts    # <router-outlet> element
+│   ├── styles/global.css       # Reset + light/dark custom properties
+│   ├── main.ts                 # Entry point
+│   └── vite-env.d.ts
 ├── index.html
-├── package.json
+├── bunfig.toml
+├── knip.config.ts
+├── playwright.config.ts
 ├── tsconfig.json
 ├── vite.config.ts
 ├── vitest.config.ts
-└── .oxlintrc.json
+├── .oxfmtrc.json
+├── .oxlintrc.json
+├── package.json
+└── LICENSE
 ```
 
 ## Router
 
-Routes are configured in `src/components/app-root.ts`:
+Routes are declared in `src/components/app-root.ts`. Paths use `URLPattern` syntax, so named params like `:id` work:
 
 ```ts
 const router = new Router([
   { path: '/', component: 'page-home' },
   { path: '/about', component: 'page-about' },
-  { path: '/users/:id', component: 'page-user' },
 ]);
 ```
 
-The `<router-outlet>` element renders the matched component. Navigate with standard `<a href="...">` links — the router intercepts clicks automatically. For programmatic navigation:
+`<router-outlet>` renders the matched component's tag. To add a page, create a `src/components/page-*.ts` element, import it in `app-root.ts` and add it to the route table.
 
-```ts
-import { router } from '../router/index.js';
-router.navigate('/about');
-```
-
-### Route params
-
-The matched component receives route params via the `route-change` custom event on `window`. Listen for it in your component:
-
-```ts
-window.addEventListener('route-change', (e) => {
-  const { params } = (e as CustomEvent).detail;
-  console.log(params.id); // e.g. '42' for /users/42
-});
-```
-
-## Customization
-
-This template is intentionally minimal. Common additions:
-
-- **More pages** — add a new `src/components/page-*.ts` and register it in `app-root.ts`
-- **Global state** — add [`@lit/context`](https://lit.dev/docs/data/context/) for component-tree-scoped state
-- **Async tasks** — use [`@lit/task`](https://lit.dev/docs/data/task/) for async data fetching
-- **CSS framework** — drop a stylesheet in `src/styles/` and import it in `main.ts`
-- **SSR** — add [`@lit-labs/ssr`](https://github.com/lit/lit/tree/main/packages/labs/ssr) when you need server-side rendering
+- Clicks on `<a href>` links are intercepted and handled client-side, except hrefs starting with `http`, `//` or `mailto:`.
+- Programmatic navigation: `router.navigate('/about')`. The `router` instance is module-local in `app-root.ts`; export it if other modules need it.
+- On every navigation the router dispatches a `route-change` event (`ROUTE_CHANGE_EVENT`) on `window`. Its `detail` is a `RouteMatch` (`{ component, params, pathname }`) or `null` when nothing matches.
+- The outlet does not pass params to the page. A page can read them with `router.match(location.pathname)?.params`, or listen for `route-change` for later changes.
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).
