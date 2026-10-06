@@ -51,14 +51,17 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report",
-    "lint": "oxlint",
+    "lint": "oxlint --deny-warnings",
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt --write .",
     "fmt:check": "oxfmt --check .",
     "check": "bun run --parallel --no-exit-on-error typecheck lint fmt:check knip",
-    "knip": "knip",
+    "knip": "knip --treat-config-hints-as-errors",
     "clean": "rm -rf node_modules/.vite dist playwright-report test-results",
-    "audit": "bun audit --audit-level=high"
+    "audit": "bun audit --audit-level=high",
+    "check:ci": "node scripts/quality.mjs",
+    "check:code": "node scripts/quality.mjs code",
+    "check:security": "node scripts/quality.mjs security"
   },
   "dependencies": {
     "lit": "latest"
@@ -80,5 +83,5 @@
   "engines": {
     "bun": ">=1.0.0"
   },
-  "packageManager": "bun@1.4.0"
+  "packageManager": "bun@1.4.2"
 }
