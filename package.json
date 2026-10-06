@@ -61,21 +61,21 @@
     "audit": "bun audit --audit-level=high"
   },
   "dependencies": {
-    "lit": "^3.3.3"
+    "lit": "latest"
   },
   "devDependencies": {
-    "@playwright/test": "^1.63.0",
-    "@types/bun": "1.4.2",
-    "@vitest/browser": "5.0.2",
-    "@vitest/browser-playwright": "5.0.2",
-    "knip": "6.38.0",
-    "oxfmt": "0.70.0",
-    "oxlint": "1.85.0",
-    "terser": "5.51.2",
-    "typescript": "^7.0.2",
-    "vite": "8.3.1",
-    "vitest": "5.0.2",
-    "vitest-browser-lit": "^1.0.1"
+    "@playwright/test": "latest",
+    "@types/bun": "latest",
+    "@vitest/browser": "latest",
+    "@vitest/browser-playwright": "latest",
+    "knip": "latest",
+    "oxfmt": "latest",
+    "oxlint": "latest",
+    "terser": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vitest": "latest",
+    "vitest-browser-lit": "latest"
   },
   "engines": {
     "bun": ">=1.0.0"
