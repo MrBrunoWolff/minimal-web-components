@@ -1,0 +1,14 @@
+{
+  "tier": "quick",
+  "bun": "1.4.2",
+  "node": "24.x",
+  "stages": {
+    "code": [
+      ["bun", "run", "check"],
+      ["playwright-install"],
+      ["bun", "run", "test", "--", "--run"],
+      ["bun", "run", "build"]
+    ],
+    "security": [["bun", "run", "audit"]]
+  }
+}
